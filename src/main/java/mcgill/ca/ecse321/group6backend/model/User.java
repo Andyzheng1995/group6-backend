@@ -9,16 +9,16 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	
-	private String id;
+	private Double id;
 	private String name;
 	
 	@Id
 	@Column(name="Id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public String getId() {
+	public Double getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Double id) {
 		this.id = id;
 	}
 	@Column(name="name")
