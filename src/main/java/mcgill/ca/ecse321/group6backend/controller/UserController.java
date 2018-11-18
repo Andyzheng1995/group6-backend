@@ -28,7 +28,7 @@ public class UserController {
 		return "Hello world!";
 	}
 	
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<?> createUser(
             @RequestParam("username") String userName
