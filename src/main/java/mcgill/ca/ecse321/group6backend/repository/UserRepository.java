@@ -1,6 +1,7 @@
 package mcgill.ca.ecse321.group6backend.repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,7 +12,7 @@ import mcgill.ca.ecse321.group6backend.model.User;
 @Repository
 public class UserRepository {
 	
-	@Autowired
+	@PersistenceContext
 	EntityManager eManager;
 	
 	@Transactional
