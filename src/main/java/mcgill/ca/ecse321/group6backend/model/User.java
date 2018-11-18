@@ -3,8 +3,10 @@ package mcgill.ca.ecse321.group6backend.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "user")
 public class User {
 	
 	private int id;
