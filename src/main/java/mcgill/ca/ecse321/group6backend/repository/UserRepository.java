@@ -15,9 +15,8 @@ public class UserRepository {
 	EntityManager eManager;
 	
 	@Transactional
-	public User createUser(String name) {
-		User user = new User();
-		user.setName(name);
+	public User createUser(String name, String phone, int role, String pwd, String repwd) {
+		User user = new User(name,phone,role,pwd);
 		eManager.persist(user);
 		return user;
 	}

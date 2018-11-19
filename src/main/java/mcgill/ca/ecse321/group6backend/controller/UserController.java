@@ -28,21 +28,32 @@ public class UserController {
 		return "Hello world!";
 	}
 	
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<?> createUser(
-            @RequestParam("username") String userName
+            @RequestParam("name") String name,
+            @RequestParam("phone") String phone,
+            @RequestParam("role") int role,
+            @RequestParam("pwd") String pwd,
+            @RequestParam("repwd") String repwd
     ) throws JSONException {
-        User user = uRepository.createUser(userName);
-        if (user != null) {
-            JSONObject json = new JSONObject();
-            json.put("msg","data"+" " + userName + " created!");
-            return new ResponseEntity<>(json.toString(), HttpStatus.OK);
+        if (pwd.equals(repwd)) {
+			User user = uRepository.createUser(name,phone,role,pwd,repwd);
+	        if (user != null) {
+	            JSONObject json = new JSONObject();
+	            json.put("msg","data"+" " + phone + " created!");
+	            return new ResponseEntity<>(json.toString(), HttpStatus.OK);
+	        } else {
+	            JSONObject json = new JSONObject();
+	            json.put("msg","data" + " " + phone + " could not be created.");
+	            return new ResponseEntity<>(json.toString(), HttpStatus.CONFLICT);
+	        }
         } else {
-            JSONObject json = new JSONObject();
-            json.put("msg","data" + " " + userName + " could not be created.");
-            return new ResponseEntity<>(json.toString(), HttpStatus.CONFLICT);
-        }
+        	JSONObject json = new JSONObject();
+            json.put("msg","Password is not consist");
+			return new ResponseEntity<>(json.toString(),HttpStatus.CONFLICT);
+		}
+        
        
 	}
 	

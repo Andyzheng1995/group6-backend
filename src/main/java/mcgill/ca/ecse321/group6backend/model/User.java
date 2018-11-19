@@ -15,6 +15,7 @@ public class User {
 	private String name;
 	private String phone;
 	private String pwd;
+	// 0 for admin, 1 for driver, 2 for passenger
 	private int role;
 	private boolean currentTrip = false;
 	private int currentTripId;
@@ -23,12 +24,11 @@ public class User {
 	
 	public User() {}
 	
-	public User(String name, String phone, String pwd, int role, int currentTripId) {
+	public User(String name, String phone, int role, String pwd) {
 		this.name = name;
 		this.phone = phone;
 		this.pwd = pwd;
 		this.role = role;
-		this.currentTripId = currentTripId;
 	}
 	
 	@Id
