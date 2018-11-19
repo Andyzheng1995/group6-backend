@@ -69,7 +69,7 @@ public class User {
 		this.role = role;
 	}
 	@Column(name="current_at_trip")
-	public boolean currentAtTrip() {
+	public boolean getCurrentAtTrip() {
 		return currentTrip;
 	}
 	public void setCurrentAtTrip(boolean currentTrip) {

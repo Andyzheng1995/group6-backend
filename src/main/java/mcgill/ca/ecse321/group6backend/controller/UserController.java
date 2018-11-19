@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,13 +51,15 @@ public class UserController {
         	JSONObject json = new JSONObject();
             json.put("msg","Password is not consist");
 			return new ResponseEntity<>(json.toString(),HttpStatus.CONFLICT);
-		}
-        
-       
+		}      
 	}
 	
-	@RequestMapping(value = "/check/{name}", method = RequestMethod.GET)
-	public User getUser(@PathVariable("name") String name) {
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public User getUser(
+			@RequestParam("name") String name,
+            @RequestParam("phone") String phone,
+            @RequestParam("role") int role,
+            @RequestParam("pwd") String pwd) {
 		User user = uRepository.getUser(name);
 		return user;
 	}
