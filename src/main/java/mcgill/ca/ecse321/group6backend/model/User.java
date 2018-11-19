@@ -17,12 +17,18 @@ public class User {
 	private String pwd;
 	private int role;
 	private boolean currentTrip = false;
-	private String currentTripId = "";
+	private int currentTripId;
 	private double score = 4;
 	private int totalNo = 0;
 	
-	public User() {
-		
+	public User() {}
+	
+	public User(String name, String phone, String pwd, int role, int currentTripId) {
+		this.name = name;
+		this.phone = phone;
+		this.pwd = pwd;
+		this.role = role;
+		this.currentTripId = currentTripId;
 	}
 	
 	@Id
@@ -70,10 +76,10 @@ public class User {
 		this.currentTrip = currentTrip;
 	}
 	@Column(name="current_trip_id")
-	public String getCurrentTripId() {
+	public int getCurrentTripId() {
 		return currentTripId;
 	}
-	public void setCurrentTripId(String currentTripId) {
+	public void setCurrentTripId(int currentTripId) {
 		this.currentTripId = currentTripId;
 	}
 	@Column(name="score")
