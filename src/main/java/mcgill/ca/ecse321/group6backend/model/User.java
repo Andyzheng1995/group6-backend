@@ -21,10 +21,13 @@ public class User {
 	private double score = 4;
 	private int totalNo = 0;
 	
+	public User() {
+		
+	}
+	
 	@Id
 	@Column(name="id", updatable = false, nullable = false)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	//@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}
@@ -84,7 +87,7 @@ public class User {
 	public int getTotalNo() {
 		return totalNo;
 	}
-	public void setTotal_no(int totalNo) {
+	public void setTotalNo(int totalNo) {
 		this.totalNo = totalNo;
 	}
 	
