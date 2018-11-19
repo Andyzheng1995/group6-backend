@@ -1,5 +1,7 @@
 package mcgill.ca.ecse321.group6backend.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,12 +57,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public User getUser(
-			@RequestParam("name") String name,
+	public User getUser(HttpServletRequest request,
             @RequestParam("phone") String phone,
             @RequestParam("role") int role,
             @RequestParam("pwd") String pwd) {
-		User user = uRepository.getUser(name);
+		User user = uRepository.getUser(phone,role,pwd);
+		if (null!=user) {
+			request.getSession().setAttribute("user", user);
+		}
 		return user;
 	}
 }

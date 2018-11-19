@@ -22,8 +22,12 @@ public class UserRepository {
 	}
 	
 	@Transactional
-	public User getUser(String name) {
-		User user = eManager.find(User.class, name);
-		return user;
+	public User getUser(String phone, int role, String pwd) {
+		User user = eManager.find(User.class, phone);
+		if (pwd.equals(user.getPwd())&&role==user.getRole()) {
+			return user;
+		} else {
+			return null;
+		}
 	}
 }
