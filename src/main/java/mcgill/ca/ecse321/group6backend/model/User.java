@@ -15,7 +15,8 @@ public class User {
 	private String name;
 	
 	@Id
-	@Column(name="id")
+	@Column(name="id", updatable = false, nullable = false)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	//@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
 		return id;

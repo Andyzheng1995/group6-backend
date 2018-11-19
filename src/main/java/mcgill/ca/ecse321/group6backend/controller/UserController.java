@@ -43,6 +43,7 @@ public class UserController {
             json.put("msg","data" + " " + userName + " could not be created.");
             return new ResponseEntity<>(json.toString(), HttpStatus.CONFLICT);
         }
+       
 	}
 	
 	@RequestMapping(value = "/check/{name}", method = RequestMethod.GET)
