@@ -59,9 +59,9 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public User getUser(HttpServletRequest request,
             @RequestParam("phone") String phone,
-            @RequestParam("role") String role,
+            @RequestParam("role") int role,
             @RequestParam("pwd") String pwd) {
-		User user = uRepository.getUser(phone,Integer.parseInt(role),pwd);
+		User user = uRepository.getUser(phone,role,pwd);
 		if (null!=user) {
 			request.getSession().setAttribute("user", user);
 		}
