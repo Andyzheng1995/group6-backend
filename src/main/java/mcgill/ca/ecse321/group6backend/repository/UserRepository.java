@@ -1,6 +1,7 @@
 package mcgill.ca.ecse321.group6backend.repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,7 +24,8 @@ public class UserRepository {
 	
 	@Transactional
 	public User getUser(String phone, int role, String pwd) {	
-		User user = (User)eManager.createQuery("from User where phone = "+phone);
+		Query query = eManager.createQuery("from User where phone = "+phone);
+		User user = (User) query.getResultList().get(0);
 		if (pwd.equals(user.getPwd())&&role==user.getRole()) {
 			return user;
 		} else {
