@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import mcgill.ca.ecse321.group6backend.model.User;
-import mcgill.ca.ecse321.group6backend.repository.UserRepository;
+import mcgill.ca.ecse321.group6backend.model.Users;
+import mcgill.ca.ecse321.group6backend.repository.UsersRepository;
 
 @CrossOrigin
 @RestController
 public class UserController {
 	
 	@Autowired
-	UserRepository uRepository;
+	UsersRepository uRepository;
 	
 	@RequestMapping("/")
 	public String greeting() {
@@ -39,8 +39,8 @@ public class UserController {
             @RequestParam("repwd") String repwd
     ) throws JSONException {
         if (pwd.equals(repwd)) {
-			User user = uRepository.createUser(name,phone,role,pwd,repwd);
-	        if (user != null) {
+			Users users = uRepository.createUser(name,phone,role,pwd,repwd);
+	        if (users != null) {
 	            JSONObject json = new JSONObject();
 	            json.put("msg","data"+" " + phone + " created!");
 	            return new ResponseEntity<>(json.toString(), HttpStatus.OK);
@@ -57,14 +57,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public User getUser(HttpServletRequest request,
+	public Users getUser(HttpServletRequest request,
             @RequestParam("phone") String phone,
             @RequestParam("role") int role,
             @RequestParam("pwd") String pwd) {
-		User user = uRepository.getUser(phone,role,pwd);
-		if (null!=user) {
-			request.getSession().setAttribute("user", user);
+		Users users = uRepository.getUser(phone,role,pwd);
+		if (null!=users) {
+			request.getSession().setAttribute("user", users);
 		}
-		return user;
+		return users;
 	}
 }

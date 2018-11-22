@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class Users {
 	
 	private int id;
 	private String name;
@@ -22,9 +22,9 @@ public class User {
 	private double score = 4;
 	private int totalNo = 0;
 	
-	public User() {}
+	public Users() {}
 	
-	public User(String name, String phone, int role, String pwd) {
+	public Users(String name, String phone, int role, String pwd) {
 		this.name = name;
 		this.phone = phone;
 		this.pwd = pwd;
