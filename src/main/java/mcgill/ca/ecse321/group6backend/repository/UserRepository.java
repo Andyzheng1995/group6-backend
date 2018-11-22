@@ -27,7 +27,7 @@ public class UserRepository {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Object> getUser(String phone, int role, String pwd) {	
-		Query query = eManager.createNativeQuery("select * from users where phone = '5146666666'");
+		Query query = eManager.createNativeQuery("select * from users where phone = '"+phone+"'");
 		return query.getResultList();
 	}
 }
