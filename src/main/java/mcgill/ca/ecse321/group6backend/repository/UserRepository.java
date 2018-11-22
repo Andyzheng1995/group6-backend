@@ -23,7 +23,7 @@ public class UserRepository {
 	
 	@Transactional
 	public User getUser(String phone, int role, String pwd) {	
-		User user = (User)eManager.createQuery("from users where phone = :"+phone);
+		User user = (User)eManager.createQuery("from users where phone = "+phone);
 		if (pwd.equals(user.getPwd())&&role==user.getRole()) {
 			return user;
 		} else {
