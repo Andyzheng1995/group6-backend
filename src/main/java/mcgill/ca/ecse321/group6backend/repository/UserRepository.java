@@ -1,5 +1,7 @@
 package mcgill.ca.ecse321.group6backend.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -22,10 +24,10 @@ public class UserRepository {
 		return user;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Transactional
-	public User getUser(String phone, int role, String pwd) {	
+	public List<Object> getUser(String phone, int role, String pwd) {	
 		Query query = eManager.createQuery("from User where phone = " + phone);
-		User user = (User)query.getSingleResult();
-		return user;
+		return query.getResultList();
 	}
 }

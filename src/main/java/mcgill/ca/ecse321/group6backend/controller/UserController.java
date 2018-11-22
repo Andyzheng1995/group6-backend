@@ -1,5 +1,7 @@
 package mcgill.ca.ecse321.group6backend.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.json.JSONException;
@@ -57,14 +59,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public User getUser(HttpServletRequest request,
+	public List<Object> getUser(HttpServletRequest request,
             @RequestParam("phone") String phone,
             @RequestParam("role") int role,
             @RequestParam("pwd") String pwd) {
-		User user = uRepository.getUser(phone,role,pwd);
+		List<Object> list = uRepository.getUser(phone,role,pwd);
 //		if (null!=user) {
 //			request.getSession().setAttribute("user", user);
 //		}
-		return user;
+		return list;
 	}
 }
