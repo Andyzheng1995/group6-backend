@@ -62,9 +62,9 @@ public class UserController {
             @RequestParam("role") int role,
             @RequestParam("pwd") String pwd) {
 		User user = uRepository.getUser(phone,role,pwd);
-		if (null!=user) {
-			request.getSession().setAttribute("user", user);
-		}
+//		if (null!=user) {
+//			request.getSession().setAttribute("user", user);
+//		}
 		return user;
 	}
 }

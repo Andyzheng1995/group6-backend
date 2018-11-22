@@ -24,12 +24,8 @@ public class UserRepository {
 	
 	@Transactional
 	public User getUser(String phone, int role, String pwd) {	
-		Query query = eManager.createQuery("from User where phone = "+phone);
-		User user = (User) query.getResultList().get(0);
-		if (pwd.equals(user.getPwd())&&role==user.getRole()) {
-			return user;
-		} else {
-			return null;
-		}
+		Query query = eManager.createQuery("from User where phone = " + phone);
+		User user = (User)query.getSingleResult();
+		return user;
 	}
 }
